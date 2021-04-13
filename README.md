@@ -1,97 +1,30 @@
-Interview question
-==================
+Course Registration System
+==========================
 
-# Course Registration - A Spring Boot App
+This project is a collection of REST APIs that implement a Course Registration System. 
 
-This is a very basic spring-boot app to create courses and register participants in courses.
+# Description
 
-# REST APIs
-A course entity has a `title`, `startDate`, `endDate`, `capacity`, and `remainingPlaces`.
+REST APIs available in this project can do the following - 
 
-### Create course (POST http://localhost:5000/courses)
-with body
-```json
-{
-  "title": "Course title",
-  "startDate": "2021-05-01",
-  "endDate": "2021-05-05",
-  "capacity": 10
-}
-```
-Response will be 201:
-```json
-{
-  "id": 1,
-  "title": "Course title",
-  "startDate": "2021-05-01",
-  "endDate": "2021-05-05",
-  "capacity": 10,
-  "remaining": 10
-}
-```
+* Create courses with a start date, end date and total capacity. 
+* Register users for courses within 3 days of course start date. 
+* Enroll or cancel users from a course unless the date is within 3 days of starting date. 
+* Enroll a user only if the total capacity for the course is not full.
 
-### Search course by title (GET http://localhost:5000/courses?q=title)
-Response will be 200 with body :
-```json
-[
-  {
-  "id": 1,
-  "title": "Course title",
-  "startDate": "2021-05-01",
-  "endDate": "2021-05-05",
-  "capacity": 10,
-  "remaining": 10
-  },
-  ...
-]
-```
-### Get course details (GET http://localhost:5000/courses/1)
-Response will be 200 with body :
-```json
-  {
-  "id": 1,
-  "title": "Course title",
-  "startDate": "2021-05-01",
-  "endDate": "2021-05-05",
-  "capacity": 10,
-  "remaining": 5,
-  "participants":[
-    {"name":"Daniel", "registrationDate":"2021-05-01"},
-    ...
-  ]
-  },
-```
+# Usage
 
-### Sign up user for course (POST http://localhost:5000/courses/1/add)
-Body should be user details:
-```json
-{
-  "courseId": 1,
-  "registrationDate": "2021-04-01",
-  "name": "Daniel"
-}
-```
-Response will be: 
-* 200 if registration was successful, and a response body similar to get course details request.
-* 400 if `name` already enrolled to the course.
-* 400 if `registrationDate` is 3 days before course `startDate` or after.
-* 400 if course is full.
-* 404 if course does not exist.
+* This is a spring-boot application that makes use of ![Java](https://img.shields.io/badge/java-1.8-blue)  ![MIT License](https://img.shields.io/badge/maven-3.8.1-blue) Please ensure that both are installed. 
+* This project also uses ![Lombok](https://img.shields.io/badge/lombok-1.18.10-blue) Please install Lombok plugin in your IDE, it helps reduce the amount of ‘boilerplate code’.
+* Build the project using `mvn clean install`
+* Run it (using `mvn spring-boot:run`) or your favorite IDE.
+* Javadoc is available in directory `/doc`
 
-### Cancel user enrollment (POST http://localhost:5000/courses/1/remove)
-Body should be user details:
-```json
-{
-  "courseId": 1,
-  "cancelDate": "2021-05-01",
-  "name": "Daniel"
-}
-```
-Response will be: 
-* 200 if cancellation was successful, and a response body similar to get course details request.
-* 404 if course does not exist or user is not enrolled to course.
-* 400 if `cancelDate` is 3 days before course `startDate` or after.
+# API Documentation
 
-## Guidelines
-* Run the application using the command `mvn spring-boot:run`
-* Uncomment the lines within methods in com/example/demo/course/CourseControllerTests.java to run the tests separately.
+Details about the APIs are available in [API Docs](https://github.com/aruntharsius/interview-question/blob/master/api_doc.html)
+
+# Test
+
+* This project uses ![JUnit Jupiter](https://img.shields.io/badge/JUnit-Jupter-blue) for unit testing. 
+* Test the project (using `mvn clean test`) or your favorite IDE.

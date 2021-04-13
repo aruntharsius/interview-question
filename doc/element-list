@@ -1,0 +1,7 @@
+com.backbase.interview.course
+com.backbase.interview.course.controller
+com.backbase.interview.course.entities
+com.backbase.interview.course.model
+com.backbase.interview.course.repository
+com.backbase.interview.course.service
+com.backbase.interview.course.util

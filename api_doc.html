@@ -1,0 +1,79 @@
+<html>
+<head><title>Course Management System</title>
+<h1>Course Management System - API Documentation</h1></head>
+<body style="font-family: 'Segoe UI';  height: 100%;">
+<p>A course entity has a <code>title</code>, <code>startDate</code>, <code>endDate</code>, <code>capacity</code>, and <code>remainingPlaces</code>.</p>
+<h3><a id="user-content-create-course-post-httplocalhost5000courses" class="anchor" aria-hidden="true" href="#create-course-post-httplocalhost5000courses"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Create course (POST <a href="http://localhost:5000/courses" rel="nofollow">http://localhost:5000/courses</a>)</h3>
+<p>with body</p>
+<div class="highlight highlight-source-json"><pre>{
+  <span class="pl-s"><span class="pl-pds">"</span>title<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>Course title<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>startDate<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>2021-05-01<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>endDate<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>2021-05-05<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>capacity<span class="pl-pds">"</span></span>: <span class="pl-c1">10</span>
+}</pre></div>
+<p>Response will be 201:</p>
+<div class="highlight highlight-source-json"><pre>{
+  <span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>: <span class="pl-c1">1</span>,
+  <span class="pl-s"><span class="pl-pds">"</span>title<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>Course title<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>startDate<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>2021-05-01<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>endDate<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>2021-05-05<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>capacity<span class="pl-pds">"</span></span>: <span class="pl-c1">10</span>,
+  <span class="pl-s"><span class="pl-pds">"</span>remaining<span class="pl-pds">"</span></span>: <span class="pl-c1">10</span>
+}</pre></div>
+<h3><a id="user-content-search-course-by-title-get-httplocalhost5000coursesqtitle" class="anchor" aria-hidden="true" href="#search-course-by-title-get-httplocalhost5000coursesqtitle"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Search course by title (GET <a href="http://localhost:5000/courses?q=title" rel="nofollow">http://localhost:5000/courses?q=title</a>)</h3>
+<p>Response will be 200 with body :</p>
+<div class="highlight highlight-source-json"><pre>[
+  {
+  <span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>: <span class="pl-c1">1</span>,
+  <span class="pl-s"><span class="pl-pds">"</span>title<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>Course title<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>startDate<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>2021-05-01<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>endDate<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>2021-05-05<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>capacity<span class="pl-pds">"</span></span>: <span class="pl-c1">10</span>,
+  <span class="pl-s"><span class="pl-pds">"</span>remaining<span class="pl-pds">"</span></span>: <span class="pl-c1">10</span>
+  },
+  <span class="pl-ii">...</span>
+]</pre></div>
+<h3><a id="user-content-get-course-details-get-httplocalhost5000courses1" class="anchor" aria-hidden="true" href="#get-course-details-get-httplocalhost5000courses1"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Get course details (GET <a href="http://localhost:5000/courses/1" rel="nofollow">http://localhost:5000/courses/1</a>)</h3>
+<p>Response will be 200 with body :</p>
+<div class="highlight highlight-source-json"><pre>  {
+  <span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>: <span class="pl-c1">1</span>,
+  <span class="pl-s"><span class="pl-pds">"</span>title<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>Course title<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>startDate<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>2021-05-01<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>endDate<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>2021-05-05<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>capacity<span class="pl-pds">"</span></span>: <span class="pl-c1">10</span>,
+  <span class="pl-s"><span class="pl-pds">"</span>remaining<span class="pl-pds">"</span></span>: <span class="pl-c1">5</span>,
+  <span class="pl-s"><span class="pl-pds">"</span>participants<span class="pl-pds">"</span></span>:[
+    {<span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Daniel<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>registrationDate<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>2021-05-01<span class="pl-pds">"</span></span>},
+    <span class="pl-ii">...</span>
+  ]
+  },</pre></div>
+<h3><a id="user-content-sign-up-user-for-course-post-httplocalhost5000courses1add" class="anchor" aria-hidden="true" href="#sign-up-user-for-course-post-httplocalhost5000courses1add"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Sign up user for course (POST <a href="http://localhost:5000/courses/1/add" rel="nofollow">http://localhost:5000/courses/1/add</a>)</h3>
+<p>Body should be user details:</p>
+<div class="highlight highlight-source-json"><pre>{
+  <span class="pl-s"><span class="pl-pds">"</span>courseId<span class="pl-pds">"</span></span>: <span class="pl-c1">1</span>,
+  <span class="pl-s"><span class="pl-pds">"</span>registrationDate<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>2021-04-01<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>Daniel<span class="pl-pds">"</span></span>
+}</pre></div>
+<p>Response will be:</p>
+<ul>
+<li>200 if registration was successful, and a response body similar to get course details request.</li>
+<li>400 if <code>name</code> already enrolled to the course.</li>
+<li>400 if <code>registrationDate</code> is 3 days before course <code>startDate</code> or after.</li>
+<li>400 if course is full.</li>
+<li>404 if course does not exist.</li>
+</ul>
+<h3><a id="user-content-cancel-user-enrollment-post-httplocalhost5000courses1remove" class="anchor" aria-hidden="true" href="#cancel-user-enrollment-post-httplocalhost5000courses1remove"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Cancel user enrollment (POST <a href="http://localhost:5000/courses/1/remove" rel="nofollow">http://localhost:5000/courses/1/remove</a>)</h3>
+<p>Body should be user details:</p>
+<div class="highlight highlight-source-json"><pre>{
+  <span class="pl-s"><span class="pl-pds">"</span>courseId<span class="pl-pds">"</span></span>: <span class="pl-c1">1</span>,
+  <span class="pl-s"><span class="pl-pds">"</span>cancelDate<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>2021-05-01<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>Daniel<span class="pl-pds">"</span></span>
+}</pre></div>
+<p>Response will be:</p>
+<ul>
+<li>200 if cancellation was successful, and a response body similar to get course details request.</li>
+<li>404 if course does not exist or user is not enrolled to course.</li>
+<li>400 if <code>cancelDate</code> is 3 days before course <code>startDate</code> or after.</li>
+</ul>
+</body>
+</html>
