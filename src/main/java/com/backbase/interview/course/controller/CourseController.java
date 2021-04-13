@@ -1,9 +1,9 @@
 package com.backbase.interview.course.controller;
 
 import com.backbase.interview.course.model.CourseEntity;
-import com.backbase.interview.course.service.CourseService;
 import com.backbase.interview.course.model.CreateCourseView;
 import com.backbase.interview.course.model.ParticipantEntity;
+import com.backbase.interview.course.service.CourseService;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;

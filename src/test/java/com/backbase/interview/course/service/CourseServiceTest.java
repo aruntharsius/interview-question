@@ -11,13 +11,20 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static com.backbase.interview.course.util.Constants.DATE_FORMAT_YYYYMMDD;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 /**
- * Class to test the CourseService.
+ * Class to test the CourseServiceImpl.
  */
 @ExtendWith(SpringExtension.class)
 public class CourseServiceTest {
@@ -37,7 +44,7 @@ public class CourseServiceTest {
      * The course service.
      */
     @InjectMocks
-    CourseService courseService;
+    CourseServiceImpl courseService;
 
     /**
      * The CourseEntity.
@@ -97,12 +104,35 @@ public class CourseServiceTest {
     }
 
     /**
-     * Method to test courseService.signUpForCourse
+     * Method to test courseService.signUpForCourse()
      */
     @Test
     void signUpForCourseTest() {
         when(participantRepository.save(participantEntity)).thenReturn(participantEntity);
         Optional<Object> persistedCourseEntity = Optional.ofNullable(courseService.signUpForCourse(1L, participantEntity));
         assertTrue(persistedCourseEntity.isPresent());
+    }
+
+    /**
+     * Method to test courseService.cancelUserFromCourse()
+     */
+    @Test
+    void cancelFromCourseTest() {
+        when(participantRepository.save(participantEntity)).thenReturn(participantEntity);
+        Map<String, Object> participantEntityMap = new HashMap<>();
+        participantEntityMap.put("name", participantEntity.getName());
+        participantEntityMap.put("cancelDate", "2020-04-27");
+        Optional<Object> persistedCourseEntity = Optional.ofNullable(courseService.cancelUserFromCourse(1L, participantEntityMap));
+        assertTrue(persistedCourseEntity.isPresent());
+    }
+
+    /**
+     * Method to test courseService.getCalendarFromDate()
+     */
+    @Test
+    void getCalendarFromDateTest() throws ParseException {
+        DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT_YYYYMMDD);
+        Calendar calendar = courseService.getCalendarFromDate(dateFormat.parse("2020-05-01"));
+        assertEquals(calendar.get(Calendar.MILLISECOND), 0);
     }
 }
